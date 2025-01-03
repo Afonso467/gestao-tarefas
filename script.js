@@ -2,7 +2,7 @@ const taskInput = document.getElementById('task-input');
 const addTaskBtn = document.getElementById('add-task-btn');
 const taskList = document.getElementById('task-list');
 
-let tasks = [];
+let tasks = JSON.parse(sessionStorage.getItem('tasks')) || [];
 
 // Adicionar Tarefa
 addTaskBtn.addEventListener('click', () => {
@@ -10,6 +10,7 @@ addTaskBtn.addEventListener('click', () => {
     if (taskText) {
         const task = { id: Date.now(), text: taskText, completed: false };
         tasks.push(task);
+        saveTasks();
         renderTasks();
         taskInput.value = '';
     }
@@ -38,6 +39,7 @@ function toggleTask(id) {
     tasks = tasks.map(task =>
         task.id === id ? { ...task, completed: !task.completed } : task
     );
+    saveTasks();
     renderTasks();
 }
 
@@ -47,6 +49,7 @@ function editTask(id) {
     const newText = prompt('Editar tarefa:', task.text);
     if (newText) {
         task.text = newText.trim();
+        saveTasks();
         renderTasks();
     }
 }
@@ -54,7 +57,13 @@ function editTask(id) {
 // Excluir Tarefa
 function deleteTask(id) {
     tasks = tasks.filter(task => task.id !== id);
+    saveTasks();
     renderTasks();
+}
+
+// Salvar Tarefas no sessionStorage
+function saveTasks() {
+    sessionStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
 renderTasks();
