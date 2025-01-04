@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestão de Tarefas</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="mapas.png" type="image/x-icon">
 </head>
 <body>
     <header>
@@ -14,7 +15,29 @@
     <div class="container">
         <div class="task-form">
             <input type="text" id="task-input" placeholder="Adicione uma nova tarefa">
+            <select id="task-category">
+                <option value="Pessoal">Pessoal</option>
+                <option value="Trabalho">Trabalho</option>
+                <option value="Estudo">Estudo</option>
+            </select>
+            <select id="task-priority">
+                <option value="Alta">Alta</option>
+                <option value="Média">Média</option>
+                <option value="Baixa">Baixa</option>
+            </select>
+            <input type="date" id="task-due-date">
             <button id="add-task-btn">Adicionar</button>
+        </div>
+
+        <input type="text" id="search-task" placeholder="Buscar tarefas...">
+        <div class="bulk-actions">
+            <button id="complete-all-btn">Concluir Todas</button>
+            <button id="delete-all-btn">Excluir Todas</button>
+            <select id="sort-tasks">
+                <option value="none">Ordenar por</option>
+                <option value="priority">Prioridade</option>
+                <option value="dueDate">Data de Vencimento</option>
+            </select>
         </div>
         <ul id="task-list"></ul>
     </div>

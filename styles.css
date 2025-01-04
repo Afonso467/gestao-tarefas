@@ -25,7 +25,7 @@ footer {
 
 .container {
     max-width: 600px;
-    margin: 50px auto 80px auto;
+    margin: 50px auto 100px auto;
     padding: 20px;
     background: #fff;
     border-radius: 5px;
@@ -34,16 +34,16 @@ footer {
 
 .task-form {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
     margin-bottom: 20px;
 }
 
-#task-input {
+#task-input, #task-category, #task-priority, #task-due-date {
     flex: 1;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin-right: 10px;
 }
 
 #add-task-btn {
@@ -59,6 +59,14 @@ footer {
     background-color: #4cae4c;
 }
 
+#search-task {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
 #task-list {
     list-style: none;
     padding: 0;
@@ -67,6 +75,7 @@ footer {
 .task-item {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
